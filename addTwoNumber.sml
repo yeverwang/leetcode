@@ -20,14 +20,14 @@ fun bitSum(x:int list ,y:int)=(*val bitSum:int list * int -> int list*)
 		   else a+y::bs;
 
 
-fun add(x,y) = (*val addThird : int list * int list -> int list *)
+fun add(x,y) = (*val add: int list * int list -> int list *)
     case (x,y) of
 	([],y)=>y
       | (x,[]) =>x
       | (x'::xs, y'::ys) =>
 	let val t = x'+y' in
 	    if t>=10
-	    then t mod 10 :: bitSum(addThird (xs,ys),1)
+	    then t mod 10 :: bitSum(add(xs,ys),1)
 	    else t::add(xs,ys)
 	end;
 
